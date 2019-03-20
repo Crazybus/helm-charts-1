@@ -19,6 +19,7 @@ This example will be using the default values for the existing helm/charts relea
 
 The process will involve a re-sync and a rolling restart of all of your data nodes. Therefore it is important to disable shard allocation and perform a synced flush like you normally would during any other rolling upgrade. See the [rolling upgrades guide](https://www.elastic.co/guide/en/elasticsearch/reference/6.6/rolling-upgrades.html) for more information.
 
+* The default image for this chart is `docker.elastic.co/elasticsearch/elasticsearch` which contains the default distribution of Elasticsearch with a [basic license](https://www.elastic.co/subscriptions). Make sure to update the `image` and `imageTag` values to the correct Docker image and Elasticsearch version that you currently have deployed.
 * Convert your current helm/charts configuration into something that is compatible with this chart.
 * Take a fresh snapshot of your cluster. If something goes wrong you want to be able to restore your data no matter what. 
 * Check that your clusters health is green. If not abort and make sure your cluster is healthy before continuing.
@@ -82,4 +83,4 @@ The process will involve a re-sync and a rolling restart of all of your data nod
   ```
   kubectl scale deployment my-release-elasticsearch-client --replicas=0
   ```
-* Optional. Remove the `image: "docker.elastic.co/elasticsearch/elasticsearch-oss"` for each node group. This will switch the cluster to use the default image with this helm chart (`docker.elastic.co/elasticsearch/elasticsearch`) which is the default distribution of Elasticsearch bundled with a [free basic license](https://www.elastic.co/subscriptions).
+* The migration should now be complete. After verifying that everything is working correctly you can cleanup and leftover resources from your old cluster.

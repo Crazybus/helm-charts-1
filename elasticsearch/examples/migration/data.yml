@@ -1,8 +1,5 @@
 ---
 
-image: "docker.elastic.co/elasticsearch/elasticsearch-oss"
-imageTag: "6.6.1"
-
 replicas: 2
 
 extraEnvs:

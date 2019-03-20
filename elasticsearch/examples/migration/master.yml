@@ -1,8 +1,5 @@
 ---
 
-image: "docker.elastic.co/elasticsearch/elasticsearch-oss"
-imageTag: "6.6.1"
-
 # Temporarily set to 3 so we can scale up/down the old a new cluster
 # one at a time whilst always keeping 3 masters running
 replicas: 1
